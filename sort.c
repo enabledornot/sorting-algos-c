@@ -19,12 +19,18 @@ int main() {
     int size = 0;
     int range = 0;
     int selectedAlgo = 0;
-    printf("Enter array size:");
-    scanf("%d",&size);
-    printf("Enter array integer range:");
-    scanf("%d",&range);
-    printf("Select the sorting algorithm to be used from the list\n(1)selection sort\n(2)insertion sort\n(3)bubble sort\n(4)merge sort\n(5)quick sort\n(6)heap sort\n(7)radix Sort\n(8)perm Sort\nEnter:");
-    scanf("%d",&selectedAlgo);
+    while(0>=size) {
+        printf("Enter array size:");
+        scanf("%d",&size);
+    }
+    while(0>=range) {
+        printf("Enter array integer range:");
+        scanf("%d",&range);
+    }
+    while(selectedAlgo<1 || selectedAlgo>8) {
+        printf("Select the sorting algorithm to be used from the list\n(1)selection sort\n(2)insertion sort\n(3)bubble sort\n(4)merge sort\n(5)quick sort\n(6)heap sort\n(7)radix Sort\n(8)perm Sort\nEnter:");
+        scanf("%d",&selectedAlgo);
+    }
     int* rnd = randArray(size,range);
     display(rnd,size);
     switch(selectedAlgo) {
