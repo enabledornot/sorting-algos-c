@@ -3,17 +3,14 @@
 int main() {
     createLists(50);
     printList();
-    struct listOnList newList = createList();
-    struct listOnList newList2 = createList();
-    for(int i = 0;i<10;i++) {
-        add(&newList,i);
-        // add(&newList2,i+50);
+    struct listOnList newList[5];
+    for(int i = 0;i<5;i++) {
+        newList[i] = createList();
     }
-    add(&newList2,-50);
-    printList();
-    for(int i = 0;i<2;i++) {
-        rem(&newList,0);
+    for(int i = 0;i<5;i++) {
+        for(int ii = 0;ii<5;ii++) {
+            add(&newList[i],ii*ii);
+        }
     }
     printList();
-    printf("%d\n",get(&newList,0));
 }

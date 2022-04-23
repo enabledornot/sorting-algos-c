@@ -13,13 +13,15 @@ struct listOnList {
 void createLists(int maxContents) {
     prevList = malloc(sizeof(int)*maxContents);
     folloList = malloc(sizeof(int)*maxContents);
-    dataList = malloc(sizeof(void*)*maxContents);
+    dataList = malloc(sizeof(int)*maxContents);
     for(int i = 0;i<maxContents-1;i++) {
         prevList[i] = -1;
+        dataList[i] = -1;
         folloList[i] = i+1;
     }
     prevList[maxContents-1] = -1;
     folloList[maxContents-1] = -1;
+    dataList[maxContents-1] = -1;
     listSize = maxContents;
 }
 void printList() {
@@ -61,7 +63,7 @@ int newFromStack() {
 void returnToStack(int pointer) {
     folloList[pointer] = topOfStack;
     topOfStack = pointer;
-    dataList[pointer] = INT_MIN;
+    dataList[pointer] = INT_MAX;
     prevList[pointer] = -1;
 }
 void add(struct listOnList* theList, int newElement) {
@@ -89,7 +91,9 @@ int rem(struct listOnList* theList, int toRemove) {
     int prevElement = prevList[remElement];
     int nextElement = folloList[remElement];
     folloList[prevElement] = nextElement;
-    prevList[nextElement] = prevElement;
+    if(nextElement!=-1) {
+        prevList[nextElement] = prevElement;
+    }
     theList->size-=1;
     int rslt = dataList[remElement];
     returnToStack(remElement);

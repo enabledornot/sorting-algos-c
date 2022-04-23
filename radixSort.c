@@ -22,7 +22,7 @@ int getMax(int* ary, int size) {
 }
 void radixSort(int* ary, int base, int size) {
     struct listOnList* newLists = malloc(sizeof(struct listOnList)*base);
-    int count = ceil(log(getMax(ary,size)/log(base)));
+    int count = ceil(log(getMax(ary,size)/log(base)))+1;
     createLists(size+base+10);
     for(int ii = 0;ii<base;ii++) {
         newLists[ii] = createList();
@@ -38,7 +38,6 @@ void radixSort(int* ary, int base, int size) {
             while(getSize(&newLists[currentBucket])==0) {
                 currentBucket++;
             }
-            
             tmpAry[ii] = rem(&newLists[currentBucket],0);
         }
         newAry = tmpAry;
