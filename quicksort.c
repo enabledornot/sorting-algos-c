@@ -1,9 +1,11 @@
-
-int getPivot(int* ary, int a, int b) {
+#include <stdlib.h>
+#include "utils.h"
+#include "quicksort.h"
+static int getPivot(int* ary, int a, int b) {
     return ary[a];
 }
 
-int* pivotpart(int* ary, int a, int b, int pivot) {
+static int* pivotpart(int* ary, int a, int b, int pivot) {
     int x = a;
     int y = a;
     int z = b;
@@ -27,7 +29,7 @@ int* pivotpart(int* ary, int a, int b, int pivot) {
     return returnInt;
 }
 
-void quickSortRec(int* ary, int a, int b) {
+static void quickSortRec(int* ary, int a, int b) {
     if(a==b) {
         return;
     }
@@ -36,7 +38,6 @@ void quickSortRec(int* ary, int a, int b) {
     quickSortRec(ary,ploc[1],b);
     free(ploc);
 }
-
 void quickSort(int* ary, int size) {
     quickSortRec(ary,0,size);
 }

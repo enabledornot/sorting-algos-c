@@ -1,5 +1,6 @@
-
-int* copyPartOfAry(int* ary, int a, int b) {
+#include <stdlib.h>
+#include "mergesort.h"
+static int* copyPartOfAry(int* ary, int a, int b) {
     int* newAry = malloc(sizeof(int)*(b-a));
     for(int i = 0;i<b-a;i++) {
         newAry[i] = ary[a+i];
@@ -7,7 +8,7 @@ int* copyPartOfAry(int* ary, int a, int b) {
     return newAry;
 }
 
-int* mergesortrec(int* ary, int a, int b) {
+static int* mergesortrec(int* ary, int a, int b) {
     int* newAry = copyPartOfAry(ary,a,b);
     if(b-a<2) {
         return newAry;

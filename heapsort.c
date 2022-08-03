@@ -1,14 +1,15 @@
-
-int heapUp(int loc) {
+#include "utils.h"
+#include "heapsort.h"
+static int heapUp(int loc) {
     return (loc-1)/2;
 }
-int heapLeft(int loc) {
+static int heapLeft(int loc) {
     return (loc*2)+1;
 }
-int heapRight(int loc) {
+static int heapRight(int loc) {
     return (loc*2)+2;
 }
-void siftDown(int* ary, int loc, int size) {
+static void siftDown(int* ary, int loc, int size) {
     if(loc>=size) {
         return;
     }
@@ -30,13 +31,12 @@ void siftDown(int* ary, int loc, int size) {
         siftDown(ary,maxloc,size);
     }
 }
-void heapify(int* ary, int size) {
+static void heapify(int* ary, int size) {
     for(int i = size/2;i>=0;i--) {
         siftDown(ary,i,size);
     }
 }
-
-void heapsortRec(int* ary, int size) {
+static void heapsortRec(int* ary, int size) {
     if(size==0) {
         return;
     }

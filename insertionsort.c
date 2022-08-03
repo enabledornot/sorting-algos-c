@@ -1,12 +1,11 @@
-// #include "utils.c"
-
-
-void moveUp(int* ary, int loc, int from) {
+#include "utils.h"
+#include "insertionsort.h"
+static void moveUp(int* ary, int loc, int from) {
     for(int i = loc;i<from;i++) {
         swap(ary,i,from);
     }
 }
-void insertSortRec(int* ary, int a, int b) {
+static void insertSortRec(int* ary, int a, int b) {
     if(a==b) {
         return;
     }

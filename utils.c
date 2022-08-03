@@ -1,5 +1,5 @@
+#include <stdio.h>
 void swap(int* ary, int a, int b) {
-    // printf("%d,%d\n",a,b);
     int tmp = ary[a];
     ary[a] = ary[b];
     ary[b] = tmp;

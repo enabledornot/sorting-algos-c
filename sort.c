@@ -3,15 +3,15 @@
 #include <time.h>
 
 
-#include "utils.c"
-#include "selectionsort.c"
-#include "insertionsort.c"
-#include "bubblesort.c"
-#include "mergesort.c"
-#include "quicksort.c"
-#include "heapsort.c"
-#include "radixSort.c"
-#include "permSort.c"
+#include "utils.h"
+#include "selectionsort.h"
+#include "insertionsort.h"
+#include "bubblesort.h"
+#include "mergesort.h"
+#include "quicksort.h"
+#include "heapsort.h"
+#include "radixSort.h"
+#include "permSort.h"
 
 int *randArray(int size,int max);
 int main() {

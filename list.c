@@ -1,15 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
-int* prevList;
-int* folloList;
-int* dataList;
-int topOfStack;
-int listSize;
-struct listOnList {
-    int locOnList;
-    int size;
-} listo;
+#include "list.h"
+static int* prevList;
+static int* folloList;
+static int* dataList;
+static int topOfStack;
+static int listSize;
+
 void createLists(int maxContents) {
     prevList = malloc(sizeof(int)*maxContents);
     folloList = malloc(sizeof(int)*maxContents);
@@ -54,13 +52,13 @@ int getLocOnList(struct listOnList* theList, int loc) {
     }
     return cloc;
 }
-int newFromStack() {
+static int newFromStack() {
     int newLoc = topOfStack;
     topOfStack = folloList[topOfStack];
     folloList[newLoc] = -1;
     return newLoc;
 }
-void returnToStack(int pointer) {
+static void returnToStack(int pointer) {
     folloList[pointer] = topOfStack;
     topOfStack = pointer;
     dataList[pointer] = INT_MAX;
@@ -87,7 +85,6 @@ void insert(struct listOnList* theList, int newElement, int pos) {
 }
 int rem(struct listOnList* theList, int toRemove) {
     int remElement = getLocOnList(theList,toRemove);
-    // printf("-%d\n",remElement);
     int prevElement = prevList[remElement];
     int nextElement = folloList[remElement];
     folloList[prevElement] = nextElement;

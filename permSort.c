@@ -1,11 +1,12 @@
-
-int fac(int num) {
+#include <stdlib.h>
+#include "permSort.h"
+static int fac(int num) {
     int rslt = 1;
     for(int i = 2;i<=num;i++) {
         rslt*=i;
     }
 }
-int* recreateListWithout(int* list, int size, int noEli) {
+static int* recreateListWithout(int* list, int size, int noEli) {
     int* newList = malloc(sizeof(int)*(size-1));
     int count = 0;
     int altCount = 0;
@@ -18,7 +19,7 @@ int* recreateListWithout(int* list, int size, int noEli) {
     }
     return newList;
 }
-int isSorted(int* ary, int size) {
+static int isSorted(int* ary, int size) {
     int prev = ary[0];
     for(int i = 1;i<size;i++) {
         if(prev>ary[i]) {
@@ -29,7 +30,7 @@ int isSorted(int* ary, int size) {
     return 1;
 }
 
-int permSortRec(int* toAdd, int* currentAry, int sizeAdd, int sizeCurrent) {
+static int permSortRec(int* toAdd, int* currentAry, int sizeAdd, int sizeCurrent) {
     if(sizeAdd==0) {
         return isSorted(currentAry,sizeCurrent);
     }

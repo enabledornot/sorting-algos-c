@@ -1,17 +1,17 @@
 #include <math.h>
-
-#include "list.c"
-int powInt(int base, int exponent) {
+#include <stdlib.h>
+#include "list.h"
+static int powInt(int base, int exponent) {
     int rslt = 1;
     for(int i = 0;i<exponent;i++) {
         rslt*=base;
     }
     return rslt;
 }
-int getValAt(int num, int level, int base) {
+static int getValAt(int num, int level, int base) {
     return (num/(powInt(base,level))%base);
 }
-int getMax(int* ary, int size) {
+static int getMax(int* ary, int size) {
     int max = ary[0];
     for(int i = 1;i<size;i++) {
         if(max<ary[i]) {
